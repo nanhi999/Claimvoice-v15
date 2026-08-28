@@ -1,0 +1,11 @@
+ClaimVoice V16.1 — cumulative amendment based on ClaimVoice V15 Final Updated SEO.
+
+Added:
+- Vehicle Recovered After Theft SEO article and internal links.
+- Claims/Theft recovery section and Learn/Library card.
+- Claim Check Yes/No recovered-vehicle interaction with security warning popup.
+- Search autocomplete topic for vehicle recovery.
+- Sitemap and Article/Breadcrumb/FAQ structured data.
+- Practical guidance on court release/Superdari, insurer notification, inspection, recovery documents, already-paid claims, non-traceable reports, rejection/escalation, and lock/security precautions.
+- Clear disclaimer that lock replacement is a practical precaution and not a universal IRDAI mandate.
+- Existing V15 pages, forms, downloads, URLs, design and SEO structure retained.

@@ -4,7 +4,8 @@ const claimVoiceTopics = [
   ["Second-Hand Vehicle Claim Within 14 Days", "Used car purchase, transfer, ownership and claim issues", "second-hand-vehicle-14-day-insurance-claim.html"],
   ["Accident Claim Documents", "Approximate documents for an accident or own-damage claim", "claim-documents-accident-theft.html#accident"],
   ["Theft Claim Documents", "Approximate documents for a stolen vehicle claim", "claim-documents-accident-theft.html#theft"],
-  ["Vehicle Recovered After Theft", "Recovered stolen vehicle, court release, superdari, damage, insurance and lock/security checks", "vehicle-recovered-after-theft-insurance-claim/"],
+  ["Vehicle Recovered After Theft", "Court release, Superdari, insurance claim status and lock/security precautions", "vehicle-recovered-after-theft-insurance-claim.html"],
+
   ["RTO Forms 26, 28, 29 and 30", "Official motor vehicle forms and where to download them", "forms-downloads.html#rto-forms"],
   ["Claim Document Submission Cover Letter", "Template for submitting multiple documents with a clear record", "forms-downloads.html#templates"],
   ["Claim Reconsideration Request", "Sample request after rejection or disputed claim decision", "forms-downloads.html#reconsideration"],
@@ -67,16 +68,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('input[type="search"],.search-area input,.search-wrap input,.search input,#search,#q').forEach(attachSearch);
   const btn=document.getElementById('searchBtn');
   if(btn){btn.addEventListener('click',()=>{const input=document.getElementById('search');if(input){const first=input.closest('.search-area')?.querySelector('[data-url]');if(first)location.href=first.dataset.url;}});}
-  const recoveryModal=document.getElementById('cvRecoveryModal');
-  if(recoveryModal){
-    const openRecovery=()=>{recoveryModal.classList.add('open');recoveryModal.setAttribute('aria-hidden','false');document.body.classList.add('cv-modal-open');document.getElementById('cvRecoveryClose')?.focus();};
-    const closeRecovery=()=>{recoveryModal.classList.remove('open');recoveryModal.setAttribute('aria-hidden','true');document.body.classList.remove('cv-modal-open');};
-    document.querySelectorAll('input[name="vehicleRecovered"]').forEach(r=>r.addEventListener('change',()=>{if(r.value==='yes'&&r.checked)openRecovery();}));
-    document.getElementById('cvRecoveryClose')?.addEventListener('click',closeRecovery);
-    document.getElementById('cvRecoveryUnderstand')?.addEventListener('click',closeRecovery);
-    recoveryModal.querySelector('[data-recovery-close]')?.addEventListener('click',closeRecovery);
-    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&recoveryModal.classList.contains('open'))closeRecovery();});
-  }
+
+  const recoveredYes=document.getElementById('recoveredYes');
+  const recoveredNo=document.getElementById('recoveredNo');
+  const recoveryModal=document.getElementById('recoveryModal');
+  const closeRecoveryModal=document.getElementById('closeRecoveryModal');
+  if(recoveredYes&&recoveryModal){ recoveredYes.addEventListener('click',()=>{recoveryModal.classList.add('open');}); }
+  if(recoveredNo){ recoveredNo.addEventListener('click',()=>{recoveredNo.blur();}); }
+  if(closeRecoveryModal&&recoveryModal){ closeRecoveryModal.addEventListener('click',()=>recoveryModal.classList.remove('open')); recoveryModal.addEventListener('click',e=>{if(e.target===recoveryModal) recoveryModal.classList.remove('open');}); }
   const menuBtn=document.getElementById('cvMenuBtn'),panel=document.getElementById('cvMenuPanel');
   if(menuBtn&&panel){
     panel.classList.remove('open');panel.setAttribute('aria-hidden','true');menuBtn.setAttribute('aria-expanded','false');
