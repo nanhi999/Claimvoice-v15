@@ -1,0 +1,43 @@
+CLAIMVOICE V16.1 — SIMPLE GITHUB UPDATE GUIDE
+
+Use the SAME existing claimvoice-v15 repository. Do not create a new repository and do not delete the old HTML pages.
+
+1. BACK UP FIRST
+• Open the GitHub repository that currently publishes ClaimVoice V15.
+• Click Code → Download ZIP and save the backup on the PC.
+
+2. PREPARE THE V16.1 FILES
+• Open ClaimVoice_V16.1_Final.zip on the PC.
+• Open the folder inside it named claimvoice_v15.
+
+3. UPLOAD TO THE SAME GITHUB REPOSITORY
+• Open the repository.
+• Click Add file → Upload files.
+• Upload the contents of the claimvoice_v15 folder, keeping the folders exactly as supplied.
+• When GitHub asks to replace an existing file, replace it.
+• The new file vehicle-recovered-after-theft-insurance-claim.html must be uploaded at the repository root.
+• Keep the downloads folder and all its existing files.
+
+4. COMMIT
+Use a simple commit message such as:
+ClaimVoice V16.1 theft recovery guide and SEO update
+Then commit the changes to the main branch.
+
+5. DO NOT DELETE
+Do NOT delete existing HTML pages, sitemap.xml, robots.txt, styles.css, master-additions.css, v15-seo.css, script.js or the downloads folder.
+Do NOT remove old URLs just because the new article covers a related topic.
+Do NOT change the custom-domain/CNAME/Pages settings.
+
+6. AFTER GITHUB PUBLISHES
+Open and test:
+• https://claimvoice.co.in/
+• https://claimvoice.co.in/vehicle-recovered-after-theft-insurance-claim
+• https://claimvoice.co.in/library.html
+• https://claimvoice.co.in/forms-downloads.html
+• https://claimvoice.co.in/sitemap.xml
+
+7. SEARCH CONSOLE
+After the page is live, inspect the new URL in Google Search Console and request indexing if appropriate. Refresh/submit the sitemap if required.
+
+NOTE ABOUT RTO FORMS:
+V15 already contains direct official Parivahan links for Forms 26, 28, 29 and 30. Do not replace them with random copies. If an official PDF link stops working, use the official Parivahan Download Forms page and update the link.

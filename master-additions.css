@@ -146,3 +146,66 @@ main>section, .page-wrap>section{margin-bottom:24px}
 .cv-related a{color:#ed5b22;text-decoration:none;font-weight:700}
 @media(max-width:850px){.cv-grid{grid-template-columns:1fr 1fr}.cv-hub-hero h1,.cv-article h1{font-size:27px}}
 @media(max-width:560px){.cv-grid{grid-template-columns:1fr}.cv-search{flex-direction:column}.cv-search button{width:100%}}
+
+
+/* CLAIMVOICE V15 FINAL UPDATE — readability, SEO UX and document centre */
+.site-header nav a{font-size:14px!important;line-height:1.2;padding:10px 4px}
+.cv-main-nav a{font-size:14px!important}
+.cv-brand{font-size:26px!important}
+.cv-header-actions .cv-share{font-size:13px!important}
+.cv-home-cards{max-width:1080px;margin:26px auto;padding:0 20px}
+.cv-home-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cv-home-card{display:block;background:#fff;border:1px solid #e1e4e9;border-radius:13px;padding:21px;text-decoration:none;min-height:185px;box-shadow:0 5px 18px #00000008}
+.cv-home-card .eyebrow{background:transparent;padding:0;box-shadow:none;color:#ed5b22;font-size:10px;font-weight:800;letter-spacing:1px}
+.cv-home-card h3{color:#182747;font-size:19px;line-height:1.25;margin:9px 0 8px}
+.cv-home-card p{color:#596273;font-size:13px;line-height:1.65;margin:0}
+.cv-home-card span{display:block;margin-top:12px;color:#ed5b22;font-size:12px;font-weight:800}
+.cv-contact-box{max-width:1080px;margin:26px auto;padding:0 20px}
+.cv-contact-inner{background:#f7f8fa;border:1px solid #e1e4e9;border-radius:14px;padding:22px}
+.cv-contact-inner h2{color:#182747;margin:0 0 8px}
+.cv-contact-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cv-contact-links a,.cv-contact-links span{padding:10px 14px;border-radius:8px;background:#fff;border:1px solid #dfe3e9;font-size:12px;font-weight:800;color:#182747}
+.cv-contact-links a{color:#ed5b22}
+.cv-disclaimer{max-width:1080px;margin:22px auto;padding:14px 18px;background:#fffbea;border:1px solid #efdf9b;border-radius:10px;color:#5b5960;font-size:12px;line-height:1.65}
+.cv-disclaimer strong{color:#182747}
+.cv-download-badge{display:inline-block;padding:4px 7px;border-radius:5px;background:#edf6f0;color:#22734b;font-size:9px;font-weight:800;margin-left:5px}
+.cv-form-note{font-size:12px;color:#596273;line-height:1.7}
+.cv-seo-intro{max-width:920px;margin:12px auto 20px;padding:0 20px;color:#4b5565;font-size:16px;line-height:1.75}
+.cv-table-checklist{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.cv-table-checklist th,.cv-table-checklist td{border:1px solid #dfe4ea;padding:11px;text-align:left;vertical-align:top}
+.cv-table-checklist th{background:#f3f5f7;color:#182747}
+@media(max-width:800px){
+ .site-header nav a,.cv-main-nav a{font-size:13px!important}
+ .cv-brand{font-size:22px!important}
+ .cv-home-cards-grid{grid-template-columns:1fr}
+ .cv-contact-links{display:grid;grid-template-columns:1fr}
+}
+
+/* CLAIMVOICE V16.1 — theft recovery article readability */
+.cv-article .cv-table-checklist{font-size:12px;line-height:1.55}
+.cv-article .cv-table-checklist th{font-weight:800}
+@media(max-width:560px){.cv-article .cv-table-checklist{display:block;overflow-x:auto;white-space:normal}.cv-article .cv-table-checklist th,.cv-article .cv-table-checklist td{min-width:180px;padding:10px}.cv-article p,.cv-article li{font-size:13px;line-height:1.75}.cv-article .lead{font-size:14px}}
+
+
+/* CLAIMVOICE V16.1 — recovered vehicle safety prompt */
+.cv-recovery-question-card{grid-column:1/-1;border-left:4px solid #ed5b22!important;background:#fffaf7!important}
+.cv-recovery-options{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.cv-recovery-options label{display:flex;align-items:center;gap:8px;border:1px solid #dfe3e9;border-radius:9px;background:#fff;padding:10px 18px;cursor:pointer;font-weight:800;color:#182747}
+.cv-recovery-options label:has(input:checked){border-color:#ed5b22;background:#fff4ef}
+.cv-recovery-options input{accent-color:#ed5b22}
+.cv-recovery-modal{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:18px}
+.cv-recovery-modal.open{display:flex}
+.cv-recovery-backdrop{position:absolute;inset:0;background:#101a2ecc}
+.cv-recovery-dialog{position:relative;width:min(620px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;padding:28px;box-shadow:0 24px 70px #00000035}
+.cv-recovery-close{position:absolute;right:12px;top:8px;border:0;background:transparent;font-size:30px;line-height:1;color:#687182;cursor:pointer}
+.cv-recovery-icon{font-size:28px;margin-bottom:6px}
+.cv-recovery-dialog h2{margin:0 35px 12px 0;color:#182747;font-size:23px;line-height:1.25}
+.cv-recovery-dialog p{color:#5d6675;font-size:13px;line-height:1.7}
+.cv-recovery-choice{border:1px solid #e1e4e9;border-radius:10px;padding:13px 15px;margin:12px 0;background:#fafbfc}
+.cv-recovery-choice h3{font-size:14px;color:#182747;margin:0 0 5px}
+.cv-recovery-choice p{margin:0;font-size:12px}
+.cv-recovery-warning{background:#fffbea;border:1px solid #efdf9b;border-radius:9px;padding:12px 14px;color:#5b5960;font-size:11px;line-height:1.6;margin-top:14px}
+.cv-recovery-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.cv-recovery-actions .cv-secondary{cursor:pointer}
+body.cv-modal-open{overflow:hidden}
+@media(max-width:560px){.cv-recovery-dialog{padding:23px 18px;border-radius:13px}.cv-recovery-dialog h2{font-size:20px}.cv-recovery-options label{flex:1;justify-content:center}.cv-recovery-actions>*{width:100%;text-align:center}}

@@ -1,7 +1,14 @@
-/* ClaimVoice V14 — unified site search and navigation */
+/* ClaimVoice V15 — unified site search, autocomplete and navigation */
 const claimVoiceTopics = [
   ["Why Motor Insurance Claims Get Rejected", "Common rejection, dispute and deduction reasons", "why-motor-insurance-claims-get-rejected.html"],
   ["Second-Hand Vehicle Claim Within 14 Days", "Used car purchase, transfer, ownership and claim issues", "second-hand-vehicle-14-day-insurance-claim.html"],
+  ["Accident Claim Documents", "Approximate documents for an accident or own-damage claim", "claim-documents-accident-theft.html#accident"],
+  ["Theft Claim Documents", "Approximate documents for a stolen vehicle claim", "claim-documents-accident-theft.html#theft"],
+  ["Vehicle Recovered After Theft", "Recovered stolen vehicle, court release, superdari, damage, insurance and lock/security checks", "vehicle-recovered-after-theft-insurance-claim/"],
+  ["RTO Forms 26, 28, 29 and 30", "Official motor vehicle forms and where to download them", "forms-downloads.html#rto-forms"],
+  ["Claim Document Submission Cover Letter", "Template for submitting multiple documents with a clear record", "forms-downloads.html#templates"],
+  ["Claim Reconsideration Request", "Sample request after rejection or disputed claim decision", "forms-downloads.html#reconsideration"],
+  ["Subrogation and I-Bond", "Simple explanation and sample document guidance", "forms-downloads.html#subrogation"],
   ["Partial Theft", "Parts or components stolen from your vehicle", "partial-theft-insurance-claim.html"],
   ["Total Loss vs CTL", "Constructive Total Loss, IDV, repair cost and salvage", "total-loss-ctl-motor-insurance.html"],
   ["Genuine vs Fraudulent Claim", "Difference between genuine claims, investigations and insurance fraud", "genuine-vs-fraudulent-motor-insurance-claim.html"],
@@ -10,21 +17,13 @@ const claimVoiceTopics = [
   ["Surveyor vs Investigator", "Understand the difference between survey and investigation", "surveyor-vs-investigator-motor-insurance-claim.html"],
   ["Difficult Claim Documents", "What to do when a document is delayed or unavailable", "documents-hard-to-procure-motor-insurance-claim.html"],
   ["Why Claims Get Rejected", "Claim rejection reasons, objections, deductions and what to do", "claim-problems.html#rejected"],
-  ["Partial Theft", "Parts or components stolen from your vehicle", "what-happened.html#partial-theft"],
-  ["Total Theft", "Your vehicle has been stolen", "what-happened.html#total-theft"],
-  ["Attempted Theft", "Someone tried to steal your vehicle", "what-happened.html#attempted-theft"],
   ["Fire Claims", "Vehicle fire, evidence, investigation and claim issues", "what-happened.html#fire"],
   ["Flood / Water Damage", "Water damage and motor insurance claim guidance", "what-happened.html#flood"],
-  ["Total Loss", "When a vehicle may be treated as a total loss", "policy-decoder.html#total-loss"],
-  ["CTL", "Constructive Total Loss explained simply", "policy-decoder.html#ctl"],
   ["IDV", "Insured Declared Value explained", "policy-decoder.html#idv"],
-  ["Additional Documents", "Why an insurer may ask for more documents", "claim-problems.html#documents"],
+  ["CTL", "Constructive Total Loss explained simply", "policy-decoder.html#ctl"],
   ["Claim Delayed", "What to check when a motor claim is taking too long", "claim-problems.html#delayed"],
   ["Payment / Deduction", "When settlement is lower than expected", "claim-problems.html#payment"],
-  ["Surveyor vs Investigator", "Understand the two roles", "claim-process.html#surveyor"],
-  ["Claim Journey", "From intimation and survey to investigation and settlement", "claim-process.html"],
   ["How to Escalate", "What to do after rejection, delay or unresolved claim", "escalation.html"],
-  ["Difficult Documents", "What if a requested document is hard to obtain?", "documents-library.html"],
   ["Aftermarket Modifications", "Accessories, modifications and insurance claim issues", "modifications.html"],
   ["CNG / LPG", "Installation, RC and insurance endorsement", "cng-lpg-installation-rc-insurance-endorsement.html"],
   ["Fog Lights", "Aftermarket fog lights, wiring, fire and claim rejection", "aftermarket-fog-lights-insurance-claim.html"],
@@ -40,30 +39,49 @@ const claimVoiceTopics = [
   ["Feedback", "Suggestions, corrections and website feedback", "feedback.html"]
 ];
 
+function escapeHtml(value){return value.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
 function attachSearch(input){
-  if(!input || input.dataset.cvSearchV14) return;
-  input.dataset.cvSearchV14='1';
-  const box=input.parentElement.querySelector('.suggestions') || document.getElementById('suggestions');
-  if(!box) return;
+  if(!input || input.dataset.cvSearchV15) return;
+  input.dataset.cvSearchV15='1';
+  const container=input.closest('.search-area,.search-wrap,.search,.search-box') || input.parentElement;
+  let box=container?.querySelector('.suggestions,#suggestions,#drop');
+  if(!box){box=document.createElement('div');box.className='suggestions';box.hidden=true;input.parentElement.appendChild(box);}
   const render=()=>{
     const q=input.value.trim().toLowerCase();
     if(!q){box.hidden=true;box.innerHTML='';return;}
-    const matches=claimVoiceTopics.filter(t=>(t[0]+' '+t[1]).toLowerCase().includes(q)).slice(0,8);
-    box.innerHTML=matches.length ? matches.map(t=>`<div data-url="${t[2]}"><b>${t[0]}</b><br><small>${t[1]}</small></div>`).join('') : '<div>No exact topic found. Try another ClaimVoice topic.</div>';
+    const terms=q.split(/\s+/).filter(Boolean);
+    const matches=claimVoiceTopics.map(t=>({t,score:terms.reduce((n,w)=>n+((t[0]+' '+t[1]).toLowerCase().includes(w)?1:0),0)})).filter(x=>x.score===terms.length || x.score>0).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.t);
+    box.innerHTML=matches.length ? matches.map((t,i)=>`<div class="cv-suggestion-row" data-url="${t[2]}" data-index="${i}" role="option"><b>${escapeHtml(t[0])}</b><br><small>${escapeHtml(t[1])}</small></div>`).join('') : '<div class="cv-suggestion-row">No matching ClaimVoice topic. Try words such as rejection, accident, theft, documents, RTO, CTL or modification.</div>';
     box.hidden=false;
   };
-  input.addEventListener('input',render); input.addEventListener('focus',render);
-  box.addEventListener('click',e=>{const row=e.target.closest('[data-url]'); if(row) location.href=row.dataset.url;});
-  const btn=document.getElementById('searchBtn'); if(btn) btn.addEventListener('click',()=>{render();const first=box.querySelector('[data-url]');if(first)location.href=first.dataset.url;});
+  input.addEventListener('input',render);
+  input.addEventListener('focus',render);
+  input.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){box.hidden=true;return;}
+    if(e.key==='Enter'){const first=box.querySelector('[data-url]');if(first){e.preventDefault();location.href=first.dataset.url;}}
+  });
+  box.addEventListener('click',e=>{const row=e.target.closest('[data-url]');if(row)location.href=row.dataset.url;});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('input[placeholder*="Search"],#search').forEach(attachSearch);
-  const btn=document.getElementById('cvMenuBtn'),panel=document.getElementById('cvMenuPanel');
-  if(btn&&panel){
-    panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); btn.setAttribute('aria-expanded','false');
-    btn.addEventListener('click',()=>{const open=panel.classList.toggle('open');btn.setAttribute('aria-expanded',String(open));panel.setAttribute('aria-hidden',String(!open));});
-    panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');btn.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');}));
-    document.addEventListener('click',e=>{if(!panel.contains(e.target)&&!btn.contains(e.target)){panel.classList.remove('open');btn.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');}});
+  document.querySelectorAll('input[type="search"],.search-area input,.search-wrap input,.search input,#search,#q').forEach(attachSearch);
+  const btn=document.getElementById('searchBtn');
+  if(btn){btn.addEventListener('click',()=>{const input=document.getElementById('search');if(input){const first=input.closest('.search-area')?.querySelector('[data-url]');if(first)location.href=first.dataset.url;}});}
+  const recoveryModal=document.getElementById('cvRecoveryModal');
+  if(recoveryModal){
+    const openRecovery=()=>{recoveryModal.classList.add('open');recoveryModal.setAttribute('aria-hidden','false');document.body.classList.add('cv-modal-open');document.getElementById('cvRecoveryClose')?.focus();};
+    const closeRecovery=()=>{recoveryModal.classList.remove('open');recoveryModal.setAttribute('aria-hidden','true');document.body.classList.remove('cv-modal-open');};
+    document.querySelectorAll('input[name="vehicleRecovered"]').forEach(r=>r.addEventListener('change',()=>{if(r.value==='yes'&&r.checked)openRecovery();}));
+    document.getElementById('cvRecoveryClose')?.addEventListener('click',closeRecovery);
+    document.getElementById('cvRecoveryUnderstand')?.addEventListener('click',closeRecovery);
+    recoveryModal.querySelector('[data-recovery-close]')?.addEventListener('click',closeRecovery);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&recoveryModal.classList.contains('open'))closeRecovery();});
+  }
+  const menuBtn=document.getElementById('cvMenuBtn'),panel=document.getElementById('cvMenuPanel');
+  if(menuBtn&&panel){
+    panel.classList.remove('open');panel.setAttribute('aria-hidden','true');menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.addEventListener('click',()=>{const open=panel.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));panel.setAttribute('aria-hidden',String(!open));});
+    panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{panel.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');}));
+    document.addEventListener('click',e=>{if(!panel.contains(e.target)&&!menuBtn.contains(e.target)){panel.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');panel.setAttribute('aria-hidden','true');}});
   }
 });

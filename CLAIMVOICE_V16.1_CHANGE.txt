@@ -1,0 +1,35 @@
+CLAIMVOICE V16.1 — AMENDED PATCH — 27 AUGUST 2026
+
+BASELINE:
+ClaimVoice_V15_Final_Updated_SEO(1).zip
+
+V16.1 PRINCIPLE:
+This is an amendment to V15. Existing pages, filenames, design, canonical domain and public URLs are retained unless a new page is being added. No existing indexed page is intentionally deleted.
+
+NEW PRIMARY CONTENT:
+1. Added vehicle-recovered-after-theft-insurance-claim/index.html — “Vehicle Recovered After Theft Claim: What Should You Do?”
+2. Added Article, BreadcrumbList and FAQ structured data.
+3. Added internal links to theft claim, theft documents, RTO forms, subrogation/I-Bond, reconsideration, rejection and escalation resources.
+4. Added the new topic to site-wide autocomplete/search.
+5. Added the new article to Learn/Library and Claims/Theft navigation.
+6. Added the new article to the sitemap.
+
+ARTICLE SAFETY/ACCURACY POINTS:
+• Court release and superdari are explained as general processes; exact court/police requirements can vary.
+• Recovery is not presented as an automatic cancellation or automatic approval of a theft claim.
+• Non-traceable/untraced reporting is explained as a status that must be updated when recovery occurs.
+• No claim is made that IRDAI universally mandates replacing locks after every theft recovery. The article recommends a professional security check and replacement of compromised components as a practical precaution.
+• If the theft claim was already paid, the article tells the reader to notify the insurer and not dispose of the vehicle until rights are clarified.
+
+OTHER V16.1 CHECKS:
+• Existing V15 RTO direct links retained.
+• Existing ClaimVoice PDF templates retained.
+• Existing document checklist retained.
+• Existing autocomplete retained and extended.
+• Existing readability/design layer retained.
+• Contact page retains info@claimvoice.in; social URLs are not invented because verified handles were not available in the V15 package.
+
+IMPORTANT:
+The V15 package already contains direct official Parivahan PDF links for Forms 26, 28, 29 and 30. V16.1 does not replace those links with unverified copies. Test the official links after deployment and use the official Parivahan Download Forms page as the fallback if a direct PDF URL changes.
+
+V16.1 amendment: Added an interactive Vehicle Recovered? Yes/No prompt in Claim Check. Selecting Yes opens a security warning recommending immediate professional inspection of locks, ignition and security components, with guidance on keeping aftermarket purchase invoices or authorised service-centre invoices/job cards and the non-universal IRDAI disclaimer.
