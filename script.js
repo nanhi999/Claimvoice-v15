@@ -75,7 +75,12 @@ document.addEventListener('DOMContentLoaded',()=>{
   const closeRecoveryModal=document.getElementById('closeRecoveryModal');
   if(recoveredYes&&recoveryModal){ recoveredYes.addEventListener('click',()=>{recoveryModal.classList.add('open');}); }
   if(recoveredNo){ recoveredNo.addEventListener('click',()=>{recoveredNo.blur();}); }
-  if(closeRecoveryModal&&recoveryModal){ closeRecoveryModal.addEventListener('click',()=>recoveryModal.classList.remove('open')); recoveryModal.addEventListener('click',e=>{if(e.target===recoveryModal) recoveryModal.classList.remove('open');}); }
+  if(closeRecoveryModal&&recoveryModal){
+    const closeRecovery=()=>{recoveryModal.classList.remove('open'); if(recoveredYes) recoveredYes.focus();};
+    closeRecoveryModal.addEventListener('click',closeRecovery);
+    recoveryModal.addEventListener('click',e=>{if(e.target===recoveryModal) closeRecovery();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&recoveryModal.classList.contains('open')) closeRecovery();});
+  }
   const menuBtn=document.getElementById('cvMenuBtn'),panel=document.getElementById('cvMenuPanel');
   if(menuBtn&&panel){
     panel.classList.remove('open');panel.setAttribute('aria-hidden','true');menuBtn.setAttribute('aria-expanded','false');

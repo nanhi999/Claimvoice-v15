@@ -11,7 +11,7 @@ Implemented for claimvoice.co.in:
 8. Added three high-value homepage SEO cards.
 9. Increased Home, Claims, Learn, Real Stories, Share Experience and Documents navigation font sizes.
 10. Unified autocomplete/search suggestions across ClaimVoice search boxes with keyword matching, Enter and Escape support.
-11. Added Contact ClaimVoice page and info@claimvoice.in. Social URLs are deliberately left as verified placeholders because no exact official handles were available.
+11. Added Contact ClaimVoice page and info@claimvoice.co.in. Social URLs are deliberately left as verified placeholders because no exact official handles were available.
 12. Added contextual/general disclaimers and template disclaimers.
 13. Added a dedicated SEO pillar page for approximate accident and theft claim documents.
 14. Added downloadable accident/theft checklist PDF.

@@ -1,0 +1,286 @@
+CLAIMVOICE.CO.IN — GITHUB PAGES DEPLOYMENT GUIDE
+
+PURPOSE
+This package is prepared for the CURRENT ClaimVoice development/working site:
+https://claimvoice.co.in/
+
+The future plan is to complete and test the .co.in site first and later migrate/copy the finished site to claimvoice.in.
+DO NOT change the current .co.in canonical URLs to .in during this development stage.
+
+IMPORTANT
+This is a static HTML/CSS/JavaScript site. You do not need npm, Node.js, React or a build command for this package.
+GitHub Pages can publish the static files directly.
+
+============================================================
+1. BACK UP THE CURRENT GITHUB REPOSITORY
+============================================================
+
+1. Open the existing ClaimVoice repository on GitHub.
+2. Click Code -> Download ZIP.
+3. Keep that ZIP as the rollback backup.
+4. Do NOT delete the existing repository.
+5. Do NOT create a second repository just for this update unless there is a specific reason.
+
+============================================================
+2. WHAT IS IN THIS PACKAGE
+============================================================
+
+The package contains the complete website files, including:
+
+- index.html
+- all existing ClaimVoice article pages
+- CSS files
+- script.js
+- sitemap.xml
+- robots.txt
+- the new vehicle-recovered-after-theft-insurance-claim.html article
+- CNAME configured for claimvoice.co.in
+- supporting documents and update notes
+
+The important new page is:
+vehicle-recovered-after-theft-insurance-claim.html
+
+============================================================
+3. METHOD A — UPLOAD THROUGH GITHUB WEBSITE
+============================================================
+
+Use this if uploading through the browser is convenient.
+
+1. Open the existing ClaimVoice repository.
+2. Click Add file -> Upload files.
+3. Open this package on your computer.
+4. Enter the claimvoice_v15 folder.
+5. Select the website files and folders inside it — NOT the outer ZIP itself.
+6. Drag them into the GitHub upload area.
+7. When GitHub asks whether existing files should be replaced, allow the replacement for the updated files.
+8. Make sure CNAME is present at the repository root.
+9. Enter a commit message such as:
+
+   Add recovered vehicle security guide and ClaimVoice updates
+
+10. Commit the changes to the branch currently used by GitHub Pages (normally main).
+
+GitHub's browser uploader supports uploading multiple files; browser uploads are subject to GitHub's per-file limits.
+
+============================================================
+4. METHOD B — GITHUB DESKTOP (RECOMMENDED FOR A LARGE UPDATE)
+============================================================
+
+1. Install/open GitHub Desktop.
+2. Clone the existing ClaimVoice repository if it is not already on the computer.
+3. Make a backup copy of the local repository folder.
+4. Open the downloaded ClaimVoice package.
+5. Enter:
+
+   claimvoice_v15
+
+6. Copy its contents into the local GitHub repository.
+7. Allow files to be replaced when Windows asks.
+8. Open GitHub Desktop.
+9. Review the Changes list carefully.
+10. Confirm that the files being changed are the intended ClaimVoice files.
+11. Commit with:
+
+   Add recovered vehicle security guide and ClaimVoice updates
+
+12. Click Push origin.
+
+============================================================
+5. GITHUB PAGES SETTINGS
+============================================================
+
+On GitHub:
+
+Repository -> Settings -> Pages
+
+Under Build and deployment:
+
+Source: Deploy from a branch
+Branch: main (or the branch currently used by your site)
+Folder: / (root)
+
+Click Save if you changed anything.
+
+GitHub Pages can also use GitHub Actions, but this package does not require a build step. Direct branch publishing is the simpler option for this static site.
+
+============================================================
+6. CUSTOM DOMAIN — claimvoice.co.in
+============================================================
+
+The package contains this file at repository root:
+
+CNAME
+
+Its content is:
+
+claimvoice.co.in
+
+In GitHub Pages settings, the Custom domain should also be:
+
+claimvoice.co.in
+
+Do not replace it with claimvoice.in yet.
+
+If your DNS is already correctly connected to GitHub Pages, do not change the DNS just because this update is being uploaded.
+
+If you are configuring the domain for the first time, use GitHub's current Custom Domain instructions and your DNS provider's records. GitHub recommends verifying a custom domain before adding it to a repository where possible.
+
+============================================================
+7. AFTER DEPLOYMENT — WAIT FOR PUBLISHING
+============================================================
+
+GitHub Pages may take several minutes to publish a new commit.
+
+First open:
+
+https://claimvoice.co.in/
+
+Then test:
+
+https://claimvoice.co.in/vehicle-recovered-after-theft-insurance-claim.html
+
+https://claimvoice.co.in/sitemap.xml
+
+https://claimvoice.co.in/robots.txt
+
+============================================================
+8. TEST THE NEW RECOVERED VEHICLE FEATURE
+============================================================
+
+On the recovered vehicle article:
+
+A. Select:
+"No — it has not been recovered"
+
+Expected result:
+Nothing extra should happen.
+
+B. Select:
+"Yes — my vehicle was recovered"
+
+Expected result:
+A warning modal should appear.
+
+The warning explains that a recovered vehicle may have compromised:
+
+- locks
+- keys/remotes
+- ignition
+- immobiliser
+- alarm
+- keyless-entry/security systems
+
+It recommends immediate professional security inspection and, where appropriate, replacement or reprogramming of affected components.
+
+It also recommends using an authorised service centre where practical and keeping the service invoice/job card. If outside/open-market work is used, the original invoice, fitting record, part details and warranty records should be retained permanently.
+
+If the theft claim is still pending, the page advises informing the insurer before non-urgent replacement work and documenting urgent work properly.
+
+============================================================
+9. OTHER IMPORTANT TESTS
+============================================================
+
+Test:
+
+- Home page
+- Main navigation
+- Mobile menu
+- Claims page
+- Library
+- Real Stories
+- Documents
+- Forms/downloads
+- Contact page
+- Search/autocomplete
+- All PDF downloads
+- Internal links
+- New recovered-vehicle article
+- Sitemap
+- robots.txt
+
+Also test the website on both desktop and mobile.
+
+============================================================
+10. SEO CHECK
+============================================================
+
+The current development domain is:
+
+https://claimvoice.co.in/
+
+All current canonical URLs, Open Graph URLs, structured-data URLs and sitemap URLs in this package have been kept on .co.in.
+
+Do NOT change these to .in yet.
+
+When the final migration to claimvoice.in happens, we should handle it as a proper domain migration with:
+
+- final canonical URLs
+- sitemap update
+- robots.txt update
+- Google Search Console property checks
+- redirects where supported
+- internal-link update
+- structured-data update
+- social/profile URL update
+- HTTPS/domain verification
+
+Do not perform a simple blind search-and-replace at the final migration stage without checking the hosting and redirect setup.
+
+============================================================
+11. GOOGLE SEARCH CONSOLE
+============================================================
+
+After the .co.in page is live:
+
+1. Open the Google Search Console property for claimvoice.co.in if it already exists.
+2. Inspect the new URL:
+
+   https://claimvoice.co.in/vehicle-recovered-after-theft-insurance-claim.html
+
+3. Test the live URL.
+4. Request indexing if appropriate.
+5. Submit/refresh:
+
+   https://claimvoice.co.in/sitemap.xml
+
+Do not submit the future .in sitemap yet unless the .in production site is actually live and configured.
+
+============================================================
+12. IMPORTANT — DO NOT UPLOAD SECRETS
+============================================================
+
+Never upload:
+
+- passwords
+- API keys
+- access tokens
+- private credentials
+- .env files
+- private certificates
+
+GitHub repositories and GitHub Pages sites can be publicly accessible depending on the repository/account configuration.
+
+============================================================
+13. QUICK DEPLOYMENT CHECKLIST
+============================================================
+
+[ ] Back up current repository
+[ ] Copy package contents into repository
+[ ] Keep existing file names/URLs
+[ ] Confirm CNAME = claimvoice.co.in
+[ ] Confirm Pages source = main / root
+[ ] Commit changes
+[ ] Push to GitHub
+[ ] Wait for Pages deployment
+[ ] Open claimvoice.co.in
+[ ] Test recovered-vehicle article
+[ ] Test Yes warning
+[ ] Test No action
+[ ] Test mobile menu
+[ ] Test sitemap
+[ ] Test robots.txt
+[ ] Test downloads
+[ ] Test internal links
+[ ] Inspect new URL in Search Console
+
+END

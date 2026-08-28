@@ -118,12 +118,11 @@ document.getElementById('experienceForm').addEventListener('submit', function(e)
     'Outcome:\n' + (f.get('outcome') || 'Not provided') + '\n\n' +
     'Email: ' + (f.get('email') || 'Not provided')
   );
-  window.location.href = 'mailto:experiences@claimvoice.in?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:experiences@claimvoice.co.in?subject=' + subject + '&body=' + body;
   const m=document.getElementById('formMessage');
   m.style.display='block';
   m.innerHTML='<b>Your experience is ready to send.</b> Your email app should open with the details. If it does not, please use the form content manually or connect this page to ClaimVoice’s final submission inbox before publishing.';
 });
 </script>
 <script src="script.js"></script>
-</body>
-</head></html>
+</body></html>

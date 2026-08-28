@@ -9,3 +9,12 @@ Added:
 - Practical guidance on court release/Superdari, insurer notification, inspection, recovery documents, already-paid claims, non-traceable reports, rejection/escalation, and lock/security precautions.
 - Clear disclaimer that lock replacement is a practical precaution and not a universal IRDAI mandate.
 - Existing V15 pages, forms, downloads, URLs, design and SEO structure retained.
+
+
+V16.2 quality and recovery update (28 August 2026):
+- Added a prominent Yes/No recovered-vehicle question directly to the theft-recovery article.
+- Yes opens a security warning; No performs no extra action.
+- Expanded post-recovery security guidance: lockset, ignition, key reprogramming, immobiliser/alarm/keyless entry checks, connected-car credentials, authorised service history and permanent invoice retention for outside/aftermarket work.
+- Clarified that lock replacement is a practical precaution, not a universal IRDAI mandate, and that any insurance reimbursement depends on the policy/add-on.
+- Normalised site canonical/structured-data/sitemap/robots domain references to claimvoice.co.in to match the ClaimVoice domain used in contact email and project identity.
+- Corrected malformed </body></head></html> endings in seven HTML pages.
